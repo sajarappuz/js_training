@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Capitalizer</title>
+   
+</head>
+<body>
+    <div>
+        <label for="textInput">Enter a paragraph of text:</label>
+        <textarea id="textInput" rows="5" oninput="capitalizeSentences()"></textarea>
+    </div>
+    <p id="capitalizedText"></p>
+
+    <script>
+        function capitalizeSentences() {
+            //accessing input field
+            let inputElement = document.getElementById('textInput');
+             // to print capitalized rsult
+            let resultElement = document.getElementById('capitalizedText');
+            // accessing the value
+            let text = inputElement.value;
+
+            // REgex  for capitalizing first letter of  a sentence
+            let resultText = text.replace(/(^\s*|\.\s+)\S/g, (match) => match.toUpperCase());
+             
+            //result is stored to display it
+            resultElement.textContent = resultText;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Parsing Calculator</h1>
+    <div>
+        <label for="inputElement">Enter the input</label>
+        <input type="text" id="inputElement">
+        <button onclick="calculate()">Submit</button>
+        <p id="resultInp"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            let inputValue = document.getElementById('inputElement').value;
+            let resultValue = document.getElementById('resultInp');
+
+            try {
+                const result = evaluateExpression(inputValue);
+                resultValue.textContent = `Result: ${result}`;
+            } catch (err) {
+                resultValue.textContent = `Error: ${err.message}`;
+            }
+        }
+
+        const evaluateExpression = (expression) => {
+            let cleanedSymbols = expression
+                .replace(/plus/g, '+')
+                .replace(/minus/g, '-')
+                .replace(/dividedby/g, '/')
+                .replace(/multipliedby/g, '*');
+
+            const computedVal = eval(cleanedSymbols);
+            const roundedVal = Math.round(computedVal);
+
+            if (!isNaN(roundedVal)) {
+                return roundedVal;
+            } else {
+                throw new Error("Invalid value");
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing Calculator</title>
+</head>
+<body>
+    <h1>Parsing Calculator</h1>
+    <div>
+        <label for="inputElement">Enter the input</label>
+        <input type="text" id="inputElement">
+        <button onclick="calculate()">Submit</button>
+        <p id="resultInp"></p>
+        <p id="capitalResult"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            let inputValue = document.getElementById('inputElement').value;
+            let resultValue = document.getElementById('resultInp');
+            let capitalResult = document.getElementById('capitalResult');
+
+            try {
+                const result = evaluateExpression(inputValue);
+                resultValue.textContent = `Result: ${result}`; 
+            } catch (err) {
+                resultValue.textContent = `Error: ${err.message}`;
+            }
+        }
+
+        const evaluateExpression = (expression) => {
+            //regex for both capital ans small . for only small we can avoid that 'i'
+            let cleanedSymbols = expression
+                .replace(/plus/gi, '+')
+                .replace(/minus/gi, '-')
+                .replace(/dividedby/gi, '/')
+                .replace(/multipliedby/gi, '*');
+             //eval perform mathematical operation
+            const computedVal = eval(cleanedSymbols);
+            //rounded to the close integer
+            const roundedVal = Math.round(computedVal);
+            //checking whether is number or not
+            if (!isNaN(roundedVal)) {
+                return roundedVal;
+            } else {
+                throw new Error("Invalid value");
+            }
+        }
+
+        
+    </script>
+</body>
+</html>
+

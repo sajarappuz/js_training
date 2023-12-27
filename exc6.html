@@ -1,0 +1,82 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>date checker</h1>
+    <label for="datecheck">check the date</label>
+    <input type="date" name="datecheck" id="datecheck">
+    <button onclick="compareDate()">compare</button>
+    <p id="resultVal"></p>
+
+    <script>
+        function compareDate(){
+            let inputVal = document.getElementById('datecheck').value;
+            let resultElemt = document.getElementById('resultVal');
+
+            const dateRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/;
+            
+            if(dateRegex.test(inputVal)){
+                const comparingDate = new Date(inputVal.split('/').reverse().join(''));
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                if (comparingDate < today) {
+                    resultElemt.textContent = 'Before Today';
+                } else if (comparingDate > today) {
+                    resultElemt.textContent = 'After Today';
+                } else {
+                    resultElemt.textContent = 'Today';
+                }
+            } else {
+                alert('Invalid date format. Please enter date in DD/MM/YYYY format.');
+                return;
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>date checker</h1>
+    <label for="datecheck">check the date</label>
+    <input type="date" name="datecheck" id="datecheck">
+    <button onclick="compareDate()">compare</button>
+    <p id="resultVal"></p>
+
+    <script>
+        function compareDate(){
+            let inputVal = document.getElementById('datecheck').value;
+            let resultElemt = document.getElementById('resultVal');
+
+            const dateRegex = /^(\d{4})-(\d{2})-(\d{2})$/;
+            
+            if(dateRegex.test(inputVal)){
+                const comparingDate = new Date(inputVal);
+                const today = new Date().toLocaleDateString();;
+                
+                if (comparingDate < today) {
+                    resultElemt.textContent = 'Before Today';
+                } else if (comparingDate > today) {
+                    resultElemt.textContent = 'After Today';
+                } else {
+                    resultElemt.textContent = 'Today';
+                }
+            } else {
+                alert('Invalid date format. Please enter date in YYYY-MM-DD format.');
+                return;
+            }
+        }
+    </script>
+</body>
+</html>
