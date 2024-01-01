@@ -4,7 +4,7 @@ const b = {...a};
 
 b.Parent = Object.assign({}, a.Parent);
 b.Parent.Student = Object.assign({}, a.Parent.Student,{
-    marks: a.Parent.Student.marks.map((mark)=> Object.assign({}, mark)),
+    marks: a.Parent.Student.marks.map((mark)=> (Object.assign({}, mark))),
 });
 
 b.Parent.MobileNos = [...a.Parent.MobileNos];
@@ -15,5 +15,5 @@ b.Parent.Student.Rollno = 2 ;
 b.Parent.Student.marks[1].Science = 73;
 b.Parent.MobileNos[1] = "9647382718"
 
-console.log(a);
-console.log(b)
+console.log(JSON.stringify(a));
+console.log(JSON.stringify(b))
